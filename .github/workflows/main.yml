@@ -1,0 +1,30 @@
+run-name: Pull & Upload WMATA Predictions
+
+on: 
+  schedule:
+    - cron: '*/5 * * * *' # Run every 5 minutes
+  workflow_dispatch:
+
+jobs: 
+  get-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.14'
+
+      - name: Grab Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Pull & Upload
+        env:   
+          WMATA_API_KEY: ${{ secrets.WMATA_API }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+        run: wmata_to_bigquery.py
