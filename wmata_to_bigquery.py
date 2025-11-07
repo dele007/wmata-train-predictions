@@ -7,7 +7,7 @@ import zoneinfo
 import json
 from google.oauth2 import service_account
 
-API_KEY = os.environ.get('WMAT_API_KEY')
+API_KEY = os.environ.get('WMATA_API_KEY')
 PROJECT_ID = "wmata-tracker"
 DATASET_ID = "wmata_data"
 TABLE_ID = "train_predictions"
