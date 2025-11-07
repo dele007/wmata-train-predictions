@@ -4,11 +4,24 @@ import pandas as pd
 from google.cloud import bigquery
 from datetime import datetime
 import zoneinfo
+import json
+from google.oauth2 import service_account
 
 API_KEY = os.environ.get('WMAT_API_KEY')
 PROJECT_ID = "wmata-tracker"
 DATASET_ID = "wmata_data"
 TABLE_ID = "train_predictions"
+
+# Load credentials from environment variable (it's JSON as a string)
+creds_json = os.environ.get('GOOGLE_CREDENTIALS')
+if creds_json: 
+    credentials_info = json.loads(creds_json)
+    credentials = service_account.Credentials.from_service_account_info(credentials_info)
+
+client = bigquery.Client(credentials=credentials, projet = PROJECT_ID)
+else: #Fallback that uses local gcloud auth
+    client = bigquery.Client(
+
 
 client = bigquery.Client(project=PROJECT_ID)
 url = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All"
