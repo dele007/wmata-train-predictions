@@ -1,4 +1,4 @@
-#Welcome 
+# Welcome 
 
 This is a project I'm using as a demonstration of my Analytics Engineering skills. I live in DC and am a big fan of public transit,
 so I'm accessing the WMATA Train Prediction API to observe what riders  and analyze what riders see everyday. This pulls predictions every 5 minutes, so the data is fairly 
