@@ -1,4 +1,4 @@
-run-name: Pull & Upload WMATA Predictions
+name: Pull & Upload WMATA Predictions
 
 on: 
   schedule:
