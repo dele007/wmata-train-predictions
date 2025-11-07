@@ -31,10 +31,22 @@ headers={"api_key": API_KEY}
 
 
 def fetch_data():
+    print("Fetching data from WMATA API...")    
     resp = requests.get(url, headers=headers)
+    print("Response status:", resp.status_code)
+
+    if resp.status_code != 200:
+        print("Error:", resp.text)
+        return None
+    data = resp.json()    
     trains = resp.json().get("Trains", [])
     if not trains:
         print("No trains found")
+        return None
+
+    print(f"Received {len(trains)} trains")
+    if not trains:
+        print("No trains returned! Response:", json.dumps(data, indent=2))
         return None
     df = pd.DataFrame(trains)
     df["timestamp"] = datetime.now(zoneinfo.ZoneInfo("America/New_York"))
@@ -51,3 +63,4 @@ if __name__ == "__main__":
     df = fetch_data()
     if df is not None:
         bigquery_upload(df)
+
