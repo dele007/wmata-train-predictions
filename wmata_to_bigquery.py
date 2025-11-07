@@ -20,6 +20,7 @@ if creds_json:
 
     client = bigquery.Client(credentials=credentials, project=PROJECT_ID)
     print("BigQuery client project:", client.project)
+    print("Authenticated service account:", credentials.service_account_email)
 
 else: 
     #Fallback that uses local gcloud auth
