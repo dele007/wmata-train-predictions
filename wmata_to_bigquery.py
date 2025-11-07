@@ -20,10 +20,8 @@ if creds_json:
 
 client = bigquery.Client(credentials=credentials, projet = PROJECT_ID)
 else: #Fallback that uses local gcloud auth
-    client = bigquery.Client(
+    client = bigquery.Client()
 
-
-client = bigquery.Client(project=PROJECT_ID)
 url = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All"
 headers={"api_key": API_KEY}
 
