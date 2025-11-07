@@ -18,7 +18,7 @@ if creds_json:
     credentials_info = json.loads(creds_json)
     credentials = service_account.Credentials.from_service_account_info(credentials_info)
 
-client = bigquery.Client(credentials=credentials, project = PROJECT_ID)
+    client = bigquery.Client(credentials=credentials, project=PROJECT_ID)
 else: 
     #Fallback that uses local gcloud auth
     client = bigquery.Client()
