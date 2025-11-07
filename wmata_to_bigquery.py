@@ -13,7 +13,7 @@ DATASET_ID = "wmata_data"
 TABLE_ID = "train_predictions"
 
 # Load credentials from environment variable (it's JSON as a string)
-creds_json = os.environ.get('GOOGLE_CREDENTIALS')
+creds_json = os.environ.get('GCP_CREDENTIALS')
 if creds_json: 
     credentials_info = json.loads(creds_json)
     credentials = service_account.Credentials.from_service_account_info(credentials_info)
