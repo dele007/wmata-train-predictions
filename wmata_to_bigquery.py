@@ -1,11 +1,11 @@
-import sys
+import os
 import requests
 import pandas as pd
 from google.cloud import bigquery
 from datetime import datetime
 import zoneinfo
 
-API_KEY = "55e3574d1274466ea3732c55be207bd6"
+API_KEY = os.environ.get('WMAT_API_KEY')
 PROJECT_ID = "wmata-tracker"
 DATASET_ID = "wmata_data"
 TABLE_ID = "train_predictions"
