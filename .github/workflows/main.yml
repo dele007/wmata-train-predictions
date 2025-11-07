@@ -26,5 +26,5 @@ jobs:
       - name: Pull & Upload
         env:   
           WMATA_API_KEY: ${{ secrets.WMATA_API_KEY }}
-          GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         run: python wmata_to_bigquery.py
