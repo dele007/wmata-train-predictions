@@ -19,7 +19,8 @@ if creds_json:
     credentials = service_account.Credentials.from_service_account_info(credentials_info)
 
 client = bigquery.Client(credentials=credentials, projet = PROJECT_ID)
-else: #Fallback that uses local gcloud auth
+else: 
+    #Fallback that uses local gcloud auth
     client = bigquery.Client()
 
 url = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All"
